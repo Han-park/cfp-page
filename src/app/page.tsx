@@ -2,10 +2,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen p-8">
       <main className="flex-1">
-        <div className="mb-12">
+        <div className="mb-12 flex gap-2">
           <h1 className="text-[#0000FF] text-5xl font-normal">
-            CFP <span>2025</span>
+            CFP
           </h1>
+          <p className="text-[#0000FF] text-lg font-normal">2025</p>
         </div>
 
         <div className="mb-16">
