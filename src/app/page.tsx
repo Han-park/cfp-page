@@ -20,7 +20,7 @@ export default function Home() {
           <li>Technology is shaped by culture—we believe people should have control, not just algorithms.</li>
             <li>We create tools that give people power, making interactions more meaningful.</li>
             <li>Creative work needs consistency, and we help people build it.</li>
-            <li>This February, we're launching new apps.</li>
+            <li>This February, we&rsquo;re launching a new app to bring technology and creativity together.</li>
           </ul>
         </div>
 
