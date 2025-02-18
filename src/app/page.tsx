@@ -11,7 +11,7 @@ export default function Home() {
 
         <div className="mb-16">
           <ul className="list-disc text-[#0000FF] ml-6 space-y-2">
-            <li>A lifestyle technology studio enforced by AI.</li>
+            <p>A lifestyle technology studio enforced by AI.</p>
           <li>Technology is shaped by culture—we believe people should have control, not just algorithms.</li>
             <li>We create tools that give people power, making interactions more meaningful.</li>
             <li>Creative work needs consistency, and we help people build it.</li>
