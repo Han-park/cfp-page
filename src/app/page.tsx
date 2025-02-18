@@ -9,13 +9,14 @@ export default function Home() {
           <p className="text-[#0000FF] text-lg font-normal">2025</p>
         </div>
 
-        <div className="mb-16">
-          <ul className="list-disc text-[#0000FF] ml-6 space-y-2">
-            <p>A lifestyle technology studio enforced by AI.</p>
+        <div className="mb-16 text-[#0000FF]">
+        <p className="mb-1">A lifestyle technology studio enforced by AI.</p>
+          <ul className="list-disc ml-6 space-y-1">
+           
           <li>Technology is shaped by culture—we believe people should have control, not just algorithms.</li>
             <li>We create tools that give people power, making interactions more meaningful.</li>
             <li>Creative work needs consistency, and we help people build it.</li>
-            <li>This February, we’re launching a new app.</li>
+            <li>This February, we’re launching new apps.</li>
           </ul>
         </div>
 
