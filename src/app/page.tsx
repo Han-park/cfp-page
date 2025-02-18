@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen p-8">
@@ -9,16 +11,26 @@ export default function Home() {
           <p className="text-[#0000FF] text-lg font-normal">2025</p>
         </div>
 
-        <div className="mb-16 text-[#0000FF]">
+  
+
+        <div className="mb-8 text-[#0000FF]">
         <p className="mb-1">A lifestyle technology studio enforced by AI.</p>
           <ul className="list-disc ml-6 space-y-1">
            
           <li>Technology is shaped by culture—we believe people should have control, not just algorithms.</li>
             <li>We create tools that give people power, making interactions more meaningful.</li>
             <li>Creative work needs consistency, and we help people build it.</li>
-            <li>This February, we’re launching new apps.</li>
+            <li>This February, we're launching new apps.</li>
           </ul>
         </div>
+
+        <Link href="https://jonghan.substack.com" target="_blank">
+        <button className="border border-black/60 px-3 py-2 mb-16">
+        <p className="text-sm text-black/60">
+          My newsletter (Korean language)
+        </p>
+        </button>
+        </Link>
 
         <div className="mb-16">
           <h2 className="text-[#0000FF] font-normal mb-4">project list</h2>
@@ -30,6 +42,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      
 
       <footer className="flex justify-between items-end text-[#0000FF]">
         <div>
