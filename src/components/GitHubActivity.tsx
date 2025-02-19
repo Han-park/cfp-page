@@ -1,18 +1,6 @@
 'use client';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
-interface GitHubEvent {
-  type: string;
-  created_at: string;
-  payload: {
-    commits: Array<{
-      message: string;
-    }>;
-  };
-  repo: {
-    name: string;
-  };
-}
 
 interface GitHubCommit {
   commit: {
@@ -26,37 +14,70 @@ interface GitHubCommit {
   };
 }
 
+interface RepoCommit {
+  sha: string;
+  commit: {
+    message: string;
+    author: {
+      date: string;
+    };
+  };
+  html_url: string;
+}
+
 export default function GitHubActivity() {
-  const [latestCommit, setLatestCommit] = useState<GitHubCommit | null>(null);
+  const [recentCommits, setRecentCommits] = useState<GitHubCommit[]>([]);
 
   useEffect(() => {
-    const fetchLatestCommit = async () => {
+    const repos = [
+      'the-oxford-500',
+      'cfp-page',
+      'workout_works',
+      '00runners',
+      '0-gang'
+    ];
+
+    const fetchCommits = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/Han-park/events/public');
-        const data: GitHubEvent[] = await response.json();
-        const pushEvent = data.find((event) => event.type === 'PushEvent');
-        if (pushEvent) {
-          setLatestCommit({
-            commit: {
-              message: pushEvent.payload.commits[0].message,
-              author: {
-                date: pushEvent.created_at
-              }
-            },
-            repository: {
-              name: pushEvent.repo.name.split('/')[1]
-            }
-          });
-        }
+        const allCommits = await Promise.all(
+          repos.map(async (repo) => {
+            const response = await fetch(`https://api.github.com/repos/Han-park/${repo}/commits`);
+            if (!response.ok) return [];
+            const commits: RepoCommit[] = await response.json();
+            return commits.map(commit => ({
+              commit: {
+                message: commit.commit.message,
+                author: {
+                  date: commit.commit.author.date
+                }
+              },
+              repository: {
+                name: repo
+              },
+              html_url: commit.html_url
+            }));
+          })
+        );
+
+        // Flatten and sort all commits by date
+        const flattenedCommits = allCommits
+          .flat()
+          .sort((a, b) => 
+            new Date(b.commit.author.date).getTime() - 
+            new Date(a.commit.author.date).getTime()
+          )
+          .slice(0, 5); // Get only the 5 most recent commits
+
+        setRecentCommits(flattenedCommits);
       } catch (error) {
-        console.error('Error fetching GitHub activity:', error);
+        console.error('Error fetching GitHub commits:', error);
       }
     };
 
-    fetchLatestCommit();
+    fetchCommits();
   }, []);
 
-  if (!latestCommit) return null;
+  if (recentCommits.length === 0) return null;
 
   const getTimeAgo = (dateString: string) => {
     const date = new Date(dateString);
@@ -71,18 +92,29 @@ export default function GitHubActivity() {
 
   return (
     <div className="mb-16">
+      <div  className='flex justify-between'>
       <h2 className="text-[#0000FF] font-normal mb-4">recent activity</h2>
+      <Link href="https://github.com/Han-park" target="_blank">
+      <p className="text-sm text-black/60">
+        (latest commits on github)
+      </p>
+      </Link>
+      </div>
       <div className="border border-black/50 p-4">
-        <div className="flex flex-col gap-1">
-          <p className="text-sm">
-            <span className="text-black/60">committed</span> {latestCommit.commit.message}
-          </p>
-          <p className="text-sm">
-            <span className="text-black/60">to</span> {latestCommit.repository.name}
-          </p>
-          <p className="text-sm text-black/60">
-            {getTimeAgo(latestCommit.commit.author.date)}
-          </p>
+        <div className="flex flex-col gap-3">
+          {recentCommits.map((commit, index) => (
+            <div key={index} className="flex flex-row gap-1">
+              <p className="text-sm">
+                <span className="text-black/60">committed</span> {commit.commit.message}
+              </p>
+              <p className="text-sm">
+                <span className="text-black/60">to</span> {commit.repository.name}
+              </p>
+              <p className="text-sm text-black/60">
+                {getTimeAgo(commit.commit.author.date)}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

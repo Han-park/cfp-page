@@ -37,8 +37,6 @@ export default function Home() {
         </button>
         </Link>
 
-        <GitHubActivity />
-
         <div className="mb-16">
           <h2 className="text-[#0000FF] font-normal mb-4">ongoing projects</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -60,6 +58,8 @@ export default function Home() {
         </div>
       </main>
 
+      <GitHubActivity />
+
       <footer className="flex flex-col gap-8 text-[#0000FF]">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <div>
@@ -78,8 +78,9 @@ export default function Home() {
           <Image 
             src="/img/cfp-logo-vintage-blue.png" 
             alt="CFP Logo" 
-            width={32}
-            height={32}
+            width={100} 
+            height={100} 
+            quality={100}
             className="h-8 w-auto"
           />
         </div>
