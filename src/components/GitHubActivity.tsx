@@ -92,28 +92,24 @@ export default function GitHubActivity() {
 
   return (
     <div className="mb-16">
-      <div  className='flex justify-between'>
-      <h2 className="text-[#0000FF] font-normal mb-4">recent activity</h2>
-      <Link href="https://github.com/Han-park" target="_blank">
-      <p className="text-sm text-black/60 underline">
-        (latest commits on github)
-      </p>
-      </Link>
+      <div className='flex justify-between'>
+        <h2 className="text-[#0000FF] font-normal mb-4">recent activity</h2>
+        <Link href="https://github.com/Han-park" target="_blank">
+          <p className="text-sm text-black/60 underline">
+            (latest commits on github)
+          </p>
+        </Link>
       </div>
       <div className="border border-black/50 p-4">
         <div className="flex flex-col gap-3">
           {recentCommits.map((commit, index) => (
-            <div key={index} className="flex flex-row gap-1">
-              <p className="text-sm">
-                <span className="text-black/60">committed</span> {commit.commit.message}
-              </p>
-              <p className="text-sm">
-                <span className="text-black/60">to</span> {commit.repository.name}
-              </p>
-              <p className="text-sm text-black/60">
-                {getTimeAgo(commit.commit.author.date)}
-              </p>
-            </div>
+            <p key={index} className="text-sm">
+              <span className="text-black/60">committed </span>
+              {commit.commit.message}
+              <span className="text-black/60"> to </span>
+              {commit.repository.name}
+              <span className="text-black/60"> {getTimeAgo(commit.commit.author.date)}</span>
+            </p>
           ))}
         </div>
       </div>
