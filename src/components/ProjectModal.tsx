@@ -17,7 +17,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <img 
             src={project.image}
             alt={project.title}
-            className="w-full h-64 object-cover"
+            className="w-full h-full object-cover"
           />
           <p className="text-gray-700">
             {project.description}
