@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   details: string;
   url: string;
+  buttonText: string;
 }
 
 export const projects: Project[] = [
@@ -14,7 +15,8 @@ export const projects: Project[] = [
     image: '/img/thumbnail/ww.png',
     description: 'workout works is a community-driven app that helps you get fit.',
     details: 'To request an access, email me at me@han-park.info',
-    url: 'https://workout-works-app.vercel.app'
+    url: 'https://workout-works-app.vercel.app',
+    buttonText: 'Visit the app'
   },
   {
     id: 'oxford',
@@ -22,6 +24,16 @@ export const projects: Project[] = [
     image: '/img/thumbnail/the-oxford-5000.png',
     description: 'the oxford 5000 is a custom word quiz app empowered by GPT.',
     details: 'To request an access, email me at me@han-park.info',
-    url: 'https://the-oxford-5000.vercel.app'
+    url: 'https://the-oxford-5000.vercel.app',
+    buttonText: 'Visit the app'
+  },
+  {
+    id: 'gang',
+    title: 'Daejangang House',
+    image: '/img/thumbnail/daejangang.png',
+    description: 'Daejangang House is a platform for early stage entreprenuers. Located in Gwangjin-gu, Seoul.',
+    details: 'To request a visit, email me at me@han-park.info',
+    url: 'https://daejangang.xyz',
+    buttonText: 'Visit the website'
   }
 ]; 
