@@ -30,8 +30,8 @@ export default function Home() {
         </div>
 
         <Link href="https://jonghan.substack.com" target="_blank">
-        <button className="border border-black/60 px-3 py-2 mb-16">
-        <p className="text-sm text-black/60">
+        <button className="border border-black/80 px-3 py-2 mb-16">
+        <p className="text-sm text-black/80">
           My newsletter (Korean language)
         </p>
         </button>
