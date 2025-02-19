@@ -1,5 +1,6 @@
 import { Project } from '../types/project';
 import Modal from './Modal';
+import Link from 'next/link';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -25,8 +26,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div className="text-gray-600">
             {project.details}
           </div>
+          <Link href={project.url} target="_blank">
+            <button className="border border-black/60 px-3 py-2 mt-8">
+              <p className="text-sm text-black/60">
+                Visit the app
+              </p>
+            </button>
+          </Link>
         </div>
       )}
     </Modal>
   );
-} 
+}

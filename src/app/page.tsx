@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import ProjectModal from '../components/ProjectModal';
 import { Project, projects } from '../types/project';
+import GitHubActivity from '../components/GitHubActivity';
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -35,8 +36,10 @@ export default function Home() {
         </button>
         </Link>
 
+        <GitHubActivity />
+
         <div className="mb-16">
-          <h2 className="text-[#0000FF] font-normal mb-4">project list</h2>
+          <h2 className="text-[#0000FF] font-normal mb-4">ongoing projects</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((project) => (
               <div 
