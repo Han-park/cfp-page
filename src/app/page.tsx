@@ -1,6 +1,12 @@
+'use client';
+import { useState } from 'react';
 import Link from 'next/link';
+import ProjectModal from '../components/ProjectModal';
+import { Project, projects } from '../types/project';
 
 export default function Home() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <div className="flex flex-col min-h-screen p-8">
       <main className="flex-1">
@@ -32,27 +38,50 @@ export default function Home() {
         <div className="mb-16">
           <h2 className="text-[#0000FF] font-normal mb-4">project list</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="aspect-square bg-[#D3D3D3]"></div>
-            <div className="aspect-square bg-[#D3D3D3]"></div>
-            <div className="aspect-square bg-[#D3D3D3]"></div>
-            <div className="aspect-square bg-[#D3D3D3]"></div>
+            {projects.map((project) => (
+              <div 
+                key={project.id}
+                className="aspect-square bg-[#D3D3D3] cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
+                <img 
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </main>
 
-      <footer className="flex justify-between items-end text-[#0000FF]">
-        <div>
-          <h2 className="font-normal mb-2">contact</h2>
-          <ul className="list-disc ml-6">
-            <li>
-              <a href="mailto:me@han-park.info" className="hover:underline">
-                me@han-park.info
-              </a>
-            </li>
-          </ul>
+      <footer className="flex flex-col gap-8 text-[#0000FF]">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+          <div>
+            <h2 className="font-normal mb-1">contact</h2>
+            <ul className="list-disc ml-6">
+              <li>
+                <a href="mailto:me@han-park.info" className="hover:underline">
+                  me@han-park.info
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>copyright 2025 by Han Park</div>
         </div>
-        <div>copyright 2025 by Han Park</div>
+        <div className="flex justify-center">
+          <img 
+            src="/img/cfp-logo-vintage-blue.png" 
+            alt="CFP Logo" 
+            className="h-8 w-auto"
+          />
+        </div>
       </footer>
+
+      <ProjectModal 
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   );
 } 
