@@ -41,7 +41,7 @@ export default function Home() {
             {projects.map((project) => (
               <div 
                 key={project.id}
-                className="aspect-square bg-[#D3D3D3] cursor-pointer"
+                className="aspect-square bg-[#D3D3D3] cursor-pointer border border-black/50"
                 onClick={() => setSelectedProject(project)}
               >
                 <img 
