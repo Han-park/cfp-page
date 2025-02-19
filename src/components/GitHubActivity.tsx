@@ -95,7 +95,7 @@ export default function GitHubActivity() {
       <div  className='flex justify-between'>
       <h2 className="text-[#0000FF] font-normal mb-4">recent activity</h2>
       <Link href="https://github.com/Han-park" target="_blank">
-      <p className="text-sm text-black/60">
+      <p className="text-sm text-black/60 underline">
         (latest commits on github)
       </p>
       </Link>

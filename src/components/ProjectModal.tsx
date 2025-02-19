@@ -13,7 +13,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     <Modal isOpen={!!project} onClose={onClose}>
       {project && (
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-[#0000FF]">
+          <h2 className="text-2xl font-normal text-[#0000FF]">
             {project.title}
           </h2>
           <div className="relative w-full aspect-video">
