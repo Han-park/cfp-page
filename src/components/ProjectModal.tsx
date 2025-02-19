@@ -1,6 +1,7 @@
 import { Project } from '../types/project';
 import Modal from './Modal';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -15,11 +16,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <h2 className="text-2xl font-semibold text-[#0000FF]">
             {project.title}
           </h2>
-          <img 
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
+          <div className="relative w-full aspect-video">
+            <Image 
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+            />
+          </div>
           <p className="text-gray-700">
             {project.description}
           </p>

@@ -1,6 +1,19 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+interface GitHubEvent {
+  type: string;
+  created_at: string;
+  payload: {
+    commits: Array<{
+      message: string;
+    }>;
+  };
+  repo: {
+    name: string;
+  };
+}
+
 interface GitHubCommit {
   commit: {
     message: string;
@@ -20,8 +33,8 @@ export default function GitHubActivity() {
     const fetchLatestCommit = async () => {
       try {
         const response = await fetch('https://api.github.com/users/Han-park/events/public');
-        const data = await response.json();
-        const pushEvent = data.find((event: any) => event.type === 'PushEvent');
+        const data: GitHubEvent[] = await response.json();
+        const pushEvent = data.find((event) => event.type === 'PushEvent');
         if (pushEvent) {
           setLatestCommit({
             commit: {

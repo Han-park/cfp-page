@@ -4,6 +4,7 @@ import Link from 'next/link';
 import ProjectModal from '../components/ProjectModal';
 import { Project, projects } from '../types/project';
 import GitHubActivity from '../components/GitHubActivity';
+import Image from 'next/image';
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -44,13 +45,14 @@ export default function Home() {
             {projects.map((project) => (
               <div 
                 key={project.id}
-                className="aspect-square bg-[#D3D3D3] cursor-pointer border border-black/50"
+                className="aspect-square bg-[#D3D3D3] cursor-pointer border border-black/50 relative"
                 onClick={() => setSelectedProject(project)}
               >
-                <img 
+                <Image 
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             ))}
@@ -73,9 +75,11 @@ export default function Home() {
           <div>copyright 2025 by Han Park</div>
         </div>
         <div className="flex justify-center">
-          <img 
+          <Image 
             src="/img/cfp-logo-vintage-blue.png" 
             alt="CFP Logo" 
+            width={32}
+            height={32}
             className="h-8 w-auto"
           />
         </div>
