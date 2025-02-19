@@ -11,13 +11,10 @@ export default function Home() {
           <p className="text-[#0000FF] text-lg font-normal">2025</p>
         </div>
 
-  
-
         <div className="mb-8 text-[#0000FF]">
         <p className="mb-1">A lifestyle technology studio enforced by AI.</p>
           <ul className="list-disc ml-6 space-y-1">
-           
-          <li>Technology is shaped by culture—we believe people should have control, not just algorithms.</li>
+            <li>Technology is shaped by culture—we believe people should have control, not just algorithms.</li>
             <li>We create tools that give people power, making interactions more meaningful.</li>
             <li>Creative work needs consistency, and we help people build it.</li>
             <li>This February, we&rsquo;re launching a new app to bring technology and creativity together.</li>
@@ -42,7 +39,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      
 
       <footer className="flex justify-between items-end text-[#0000FF]">
         <div>
