@@ -24,15 +24,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               className="object-cover"
             />
           </div>
-          <p className="text-gray-700">
+          <p className="text-black/80">
             {project.description}
           </p>
-          <div className="text-gray-600">
+          <div className="text-black/80">
             {project.details}
           </div>
           <Link href={project.url} target="_blank">
-            <button className="border border-black/60 px-3 py-2 mt-8">
-              <p className="text-sm text-black/60">
+            <button className="border border-black/80 px-3 py-2 mt-8">
+              <p className="text-sm text-black/80">
                 {project.buttonText}
               </p>
             </button>
