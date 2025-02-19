@@ -16,7 +16,7 @@ export default function Home() {
           <h1 className="text-[#0000FF] text-5xl font-normal">
             CFP
           </h1>
-          <p className="text-[#0000FF] text-lg font-normal">2025</p>
+          <p className="text-[#0000FF] text-lg font-normal">{new Date().getFullYear()}</p>
         </div>
 
         <div className="mb-8 text-[#0000FF]">
@@ -38,7 +38,7 @@ export default function Home() {
         </Link>
 
         <div className="mb-16">
-          <h2 className="text-[#0000FF] font-normal mb-4">ongoing projects</h2>
+          <h2 className="text-[#0000FF] font-normal mb-4">ongoing projects in 2025</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((project) => (
               <div 
