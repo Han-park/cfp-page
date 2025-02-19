@@ -16,7 +16,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <h2 className="text-2xl font-normal text-[#0000FF]">
             {project.title}
           </h2>
-          <div className="relative w-full aspect-video">
+          <div className="relative w-full h-auto aspect-square">
             <Image 
               src={project.image}
               alt={project.title}
