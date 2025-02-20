@@ -33,7 +33,7 @@ export const projects: Project[] = [
     image: '/img/thumbnail/daejangang.png',
     description: 'Daejangang House is a platform for early stage entreprenuers mostly in tech industry. Located in Gwangjin-gu, Seoul.',
     details: 'Han Park, Co-founder of Daejangang House is now working on the design of the website, editing newsletter, and building extended community. To request a visit, email me at me@han-park.info',
-    url: 'https://daejangang.xyz',
+    url: 'https://www.daejangang.xyz/ko',
     buttonText: 'Visit the website'
   }
 ]; 
