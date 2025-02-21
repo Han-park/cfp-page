@@ -34,7 +34,8 @@ export default function GitHubActivity() {
       'cfp-page',
       'workout_works',
       '00runners',
-      '0-gang'
+      '0-gang',
+      'tie-app-0'
     ];
 
     const fetchCommits = async () => {
