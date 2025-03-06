@@ -35,5 +35,14 @@ export const projects: Project[] = [
     details: 'Han Park, Co-founder of Daejangang House is now working on the design of the website, editing newsletter, and building extended community. To request a visit, email me at me@han-park.info',
     url: 'https://www.daejangang.xyz/ko',
     buttonText: 'Visit the website'
+  },
+  {
+    id: 'collector',
+    title: 'Collector',
+    image: '/img/thumbnail/collector.png',
+    description: 'Collector is a bookmark app aided by GPT. Now on demo version.',
+    details: 'Full version will be released soon. To request an access, email me at me@han-park.info',
+    url: 'https://collector-cfp.vercel.app/',
+    buttonText: 'Visit the app'
   }
 ]; 

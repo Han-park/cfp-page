@@ -35,7 +35,8 @@ export default function GitHubActivity() {
       'workout_works',
       '00runners',
       '0-gang',
-      'tie-app-0'
+      'tie-app-0',
+      'collector'
     ];
 
     const fetchCommits = async () => {
