@@ -28,15 +28,6 @@ export const projects: Project[] = [
     buttonText: 'Visit the app'
   },
   {
-    id: 'gang',
-    title: 'Daejangang House',
-    image: '/img/thumbnail/daejangang.png',
-    description: 'Daejangang House is a platform for early stage entreprenuers mostly in tech industry. Located in Gwangjin-gu, Seoul.',
-    details: 'Han Park, Co-founder of Daejangang House is now working on the design of the website, editing newsletter, and building extended community. To request a visit, email me at me@han-park.info',
-    url: 'https://www.daejangang.xyz/ko',
-    buttonText: 'Visit the website'
-  },
-  {
     id: 'collector',
     title: 'Collector',
     image: '/img/thumbnail/collector.png',
@@ -44,5 +35,14 @@ export const projects: Project[] = [
     details: 'Full version will be released soon. To request an access, email me at me@han-park.info',
     url: 'https://collector-cfp.vercel.app/u/han',
     buttonText: 'Visit the app'
+  },
+  {
+    id: 'gang',
+    title: 'Daejangang House',
+    image: '/img/thumbnail/daejangang.png',
+    description: 'Daejangang House is a platform for early stage entreprenuers mostly in tech industry. Located in Gwangjin-gu, Seoul.',
+    details: 'Han Park, Co-founder of Daejangang House is now working on the design of the website, editing newsletter, and building extended community. To request a visit, email me at me@han-park.info',
+    url: 'https://www.daejangang.xyz/ko',
+    buttonText: 'Visit the website'
   }
 ]; 
