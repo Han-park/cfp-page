@@ -40,9 +40,9 @@ export const projects: Project[] = [
     id: 'collector',
     title: 'Collector',
     image: '/img/thumbnail/collector.png',
-    description: 'Collector is a bookmark app aided by GPT. Now on demo version.',
+    description: 'Collector is a bookmark app aided by GPT.',
     details: 'Full version will be released soon. To request an access, email me at me@han-park.info',
-    url: 'https://collector-cfp.vercel.app/',
+    url: 'https://collector-cfp.vercel.app/u/han',
     buttonText: 'Visit the app'
   }
 ]; 
