@@ -32,7 +32,7 @@ export default function Home() {
         <Link href="https://jonghan.substack.com" target="_blank">
         <button className="border border-black/80 px-3 py-2 mb-16">
         <p className="text-sm text-black/80">
-          My newsletter (Korean language)
+          My substack blog (Korean language)
         </p>
         </button>
         </Link>
