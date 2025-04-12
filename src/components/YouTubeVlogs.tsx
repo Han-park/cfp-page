@@ -30,9 +30,10 @@ export default function YouTubeVlogs() {
           throw new Error(data.error);
         }
         setVlogs(data.videos || []);
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Failed to fetch vlogs:", err);
-        setError(err.message || 'Failed to load vlogs.');
+        const message = err instanceof Error ? err.message : 'Failed to load vlogs.';
+        setError(message);
       } finally {
         setLoading(false);
       }

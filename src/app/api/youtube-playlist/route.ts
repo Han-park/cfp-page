@@ -1,10 +1,20 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import * as cheerio from 'cheerio';
 
 // Hardcoded playlist URL
 const PLAYLIST_URL = 'https://youtube.com/playlist?list=PLPsouz49twq3Y08sfFgIYBAtIc0MiyB0V&si=4eC2gVYsoQChZd8S';
 
-export async function GET(request: NextRequest) {
+// Define a type for the video data we extract
+interface YouTubeVideo {
+  title: string;
+  thumbnailUrl: string;
+  videoUrl: string;
+  viewCount: string;
+  uploadDate: string;
+}
+
+// We don't need the request parameter since we use a hardcoded URL
+export async function GET() {
   // Removed query parameter handling
   // const searchParams = request.nextUrl.searchParams;
   // const playlistUrl = searchParams.get('playlistUrl');
@@ -35,7 +45,8 @@ export async function GET(request: NextRequest) {
     const html = await response.text();
     const $ = cheerio.load(html);
 
-    const videos: any[] = [];
+    // Use the defined type for the videos array
+    const videos: YouTubeVideo[] = [];
 
     // Selector might need adjustment if YouTube changes its structure
     // This targets the playlist video renderer elements
@@ -78,7 +89,7 @@ export async function GET(request: NextRequest) {
       videos.push({
         title,
         thumbnailUrl,
-        videoUrl, // Included for context
+        videoUrl,
         viewCount,
         uploadDate,
       });
@@ -104,19 +115,25 @@ export async function GET(request: NextRequest) {
         if (initialData) {
             // Attempt to parse videos from ytInitialData (structure specific)
             try {
-                // Cast initialData to any to handle complex/unknown structure
+                // Cast initialData to any: Necessary trade-off for unpredictable scraped data structure.
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const dataAsAny = initialData as any;
                 const contents = dataAsAny?.contents?.twoColumnBrowseResultsRenderer?.tabs[0]?.tabRenderer?.content?.sectionListRenderer?.contents[0]?.itemSectionRenderer?.contents[0]?.playlistVideoListRenderer?.contents;
                 if (contents && Array.isArray(contents)) {
-                    contents.slice(0, 5).forEach((item: any) => {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    contents.slice(0, 5).forEach((item: any) => { // item type is complex/unknown
                         const videoRenderer = item?.playlistVideoRenderer;
                         if (videoRenderer) {
                             const title = videoRenderer?.title?.runs?.[0]?.text || 'N/A';
                             const videoId = videoRenderer?.videoId;
                             const videoUrl = videoId ? `https://www.youtube.com/watch?v=${videoId}` : 'N/A';
                             const thumbnailUrl = videoRenderer?.thumbnail?.thumbnails?.[videoRenderer.thumbnail.thumbnails.length - 1]?.url || 'N/A'; // Highest res
-                            const viewCountText = videoRenderer?.videoInfo?.runs?.find((run: any) => run.text.toLowerCase().includes('view'))?.text || 'N/A';
-                            const uploadDateText = videoRenderer?.videoInfo?.runs?.find((run: any) => run.text.toLowerCase().includes('ago'))?.text || 'N/A';
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            const viewCountRun = videoRenderer?.videoInfo?.runs?.find((run: any) => run.text.toLowerCase().includes('view'));
+                            const viewCountText = viewCountRun?.text || 'N/A';
+                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            const uploadDateRun = videoRenderer?.videoInfo?.runs?.find((run: any) => run.text.toLowerCase().includes('ago'));
+                            const uploadDateText = uploadDateRun?.text || 'N/A';
 
                             videos.push({
                                 title,
@@ -129,7 +146,8 @@ export async function GET(request: NextRequest) {
                     });
                 }
             } catch (e) {
-                console.error("Error parsing ytInitialData structure:", e);
+                // Type catch error as unknown
+                console.error("Error parsing ytInitialData structure:", e instanceof Error ? e.message : e);
             }
         }
     }
@@ -140,8 +158,9 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ videos });
 
-  } catch (error: any) {
-    console.error('Error fetching/parsing playlist:', error);
-    return NextResponse.json({ error: error.message || 'Failed to process playlist' }, { status: 500 });
+  } catch (error: unknown) { // Type catch error as unknown
+    console.error('Error fetching/parsing playlist:', error instanceof Error ? error.message : error);
+    const message = error instanceof Error ? error.message : 'Failed to process playlist';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 } 
