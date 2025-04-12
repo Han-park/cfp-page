@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "projects": "Projects",
+    "about": "About"
+  },
+  "home": {
+    "title": "Community First Projects",
+    "description": "A lifestyle technology studio enforced by AI",
+    "bulletPoints": [
+      "Technology is shaped by culture—we believe people should have control, not just algorithms.",
+      "We create tools that give people power, making interactions more meaningful.",
+      "Creative work needs consistency, and we help people build it.",
+      "This March, we're launching a new app to bring technology and creativity together."
+    ],
+    "newsletter": "Newsletter (Korean)"
+  }
+} 
