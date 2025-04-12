@@ -3,12 +3,11 @@ import { getDictionary } from "@/lib/dictionary";
 import { Locale } from '@/i18n.config';
 import PageWrapper from '@/components/PageWrapper';
 
-type Props = {
+export default async function AboutPage({
+  params: { lang },
+}: {
   params: { lang: Locale };
-};
-
-export default async function Page({ params }: Props) {
-  const { lang } = params;
+}) {
   const dict = await getDictionary(lang);
 
   return (

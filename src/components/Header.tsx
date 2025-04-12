@@ -24,13 +24,13 @@ export default function Header({ lang }: { lang: Locale }) {
             href={`/${lang}`}
             className={`lg:text-base text-sm font-semibold tracking-tight ${currentPath === '/' ? 'text-[#0000FF]' : 'text-black/60'}`}
           >
-            {lang === 'ko' ? '프로젝트' : 'Projects'}
+            {lang === 'ko' ? 'Projects' : 'Projects'}
           </Link>
           <Link 
             href={`/${lang}/about`}
             className={`lg:text-base text-sm font-semibold tracking-tight ${currentPath === 'about' ? 'text-[#0000FF]' : 'text-black/60'}`}
           >
-            {lang === 'ko' ? '소개' : 'About'}
+            {lang === 'ko' ? 'About' : 'About'}
           </Link>
         </div>
         <div className="flex gap-1">

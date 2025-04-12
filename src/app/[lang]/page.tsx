@@ -4,17 +4,17 @@ import GitHubActivity from '@/components/GitHubActivity';
 import ProjectsSection from '@/components/ProjectsSection';
 import PageWrapper from '@/components/PageWrapper';
 
-type Props = {
+export default /*async*/ function HomePage({ // Temporarily removed async
+  params: { lang },
+}: {
   params: { lang: Locale };
-};
-
-export default async function Page({ params }: Props) {
-  const { lang } = params;
-  const dict = await getDictionary(lang);
+}) {
+  // const dict = await getDictionary(lang); // Temporarily removed await
 
   return (
     <PageWrapper lang={lang}>
-      <ProjectsSection title={dict.home.title} />
+      {/* <ProjectsSection title={dict.home.title} /> */}
+      <ProjectsSection title="Projects" /> { /* Temporary placeholder */ }
       <GitHubActivity />
     </PageWrapper>
   );
