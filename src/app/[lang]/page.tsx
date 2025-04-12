@@ -1,4 +1,4 @@
-import { getDictionary } from "@/lib/dictionary";
+// import { getDictionary } from "@/lib/dictionary";
 import { Locale } from '@/i18n.config';
 import GitHubActivity from '@/components/GitHubActivity';
 import ProjectsSection from '@/components/ProjectsSection';
