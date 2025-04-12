@@ -2,12 +2,14 @@ import Link from 'next/link';
 import { getDictionary } from "@/lib/dictionary";
 import { Locale } from '@/i18n.config';
 import PageWrapper from '@/components/PageWrapper';
+import { JSX } from 'react';
 
-export default async function AboutPage({
-  params: { lang },
-}: {
+type Props = {
   params: { lang: Locale };
-}) {
+};
+
+export default async function AboutPage({ params }: Props): Promise<JSX.Element> {
+  const { lang } = params; // Destructure lang from params
   const dict = await getDictionary(lang);
 
   return (
