@@ -27,8 +27,36 @@ export default function SubstackSection() {
   const loadTimer = useRef<NodeJS.Timeout | null>(null);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
 
-  const loadSubstackWidget = useCallback(() => {
-    // Define the Substack widget configuration
+  // Define these functions without dependencies on each other
+  
+  // Function to add custom styles to Substack feed
+  const addCustomStyles = useCallback(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Make Substack feed text smaller */
+      #substack-feed-embed .sfw-title {
+        font-size: 0.875rem !important; /* text-sm equivalent (14px) */
+        line-height: 1.25rem !important;
+        font-weight: 600 !important;
+      }
+      #substack-feed-embed .sfw-post-date {
+        font-size: 0.75rem !important; /* text-xs (12px) */
+      }
+      a {
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+          padding-top: 0px !important;
+      }
+      .w-20 {
+          border-radius: 0px !important;
+          border: 1px solid rgb(125, 125, 125) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }, []);
+
+  // Configure Substack widget
+  const configureWidget = useCallback(() => {
     window.SubstackFeedWidget = {
       substackUrl: "jonghan.substack.com",
       posts: 5,
@@ -40,52 +68,27 @@ export default function SubstackSection() {
         background: "#FFFFFF",
       }
     };
+    setTimeout(addCustomStyles, 1000);
+  }, [addCustomStyles]);
 
-    // Add custom CSS for Substack feed after it loads
-    const addCustomStyles = () => {
-      const style = document.createElement('style');
-      style.textContent = `
-        /* Make Substack feed text smaller */
-        #substack-feed-embed .sfw-title {
-          font-size: 0.875rem !important; /* text-sm equivalent (14px) */
-          line-height: 1.25rem !important;
-          font-weight: 600 !important;
-        }
-        #substack-feed-embed .sfw-post-date {
-          font-size: 0.75rem !important; /* text-xs (12px) */
-        }
-        a {
-            padding-left: 0px !important;
-            padding-right: 0px !important;
-            padding-top: 0px !important;
-        }
-        .w-20 {
-            border-radius: 0px !important;
-            border: 1px solid rgb(125, 125, 125) !important;
-        }
-      `;
-      document.head.appendChild(style);
-    };
-
+  // Load the widget and check if it loaded successfully
+  const loadSubstackWidget = useCallback(() => {
+    configureWidget();
+    
     // Check if the widget loaded successfully
     loadTimer.current = setTimeout(() => {
       const feedElement = document.getElementById('substack-feed-embed');
       if (feedElement && feedElement.children.length <= 0) {
-        // Widget failed to load, retry
+        // Widget failed to load
         setHasError(true);
-        if (retryCount < 2) {
-          reloadWidget();
-        }
       } else {
         setIsLoaded(true);
         setHasError(false);
       }
     }, 3000);
+  }, [configureWidget]);
 
-    // Add styles after a slight delay to ensure the widget has loaded
-    setTimeout(addCustomStyles, 1000);
-  }, [retryCount]);
-
+  // Reload the widget
   const reloadWidget = useCallback(() => {
     setIsRetrying(true);
     setHasError(false);
@@ -118,6 +121,14 @@ export default function SubstackSection() {
     }, 3000);
   }, [loadSubstackWidget]);
 
+  // Automatic retry when error is detected
+  useEffect(() => {
+    if (hasError && retryCount < 2 && !isRetrying) {
+      reloadWidget();
+    }
+  }, [hasError, retryCount, isRetrying, reloadWidget]);
+
+  // Initial load
   useEffect(() => {
     loadSubstackWidget();
     

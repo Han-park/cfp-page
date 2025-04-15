@@ -52,9 +52,6 @@ export default async function ProjectDetailPage({
   const localizedCollaborator = project.localizedContent?.[lang]?.collaborator || project.collaborator;
   const localizedPosition = project.localizedContent?.[lang]?.position || project.position;
   
-  // Only keep the images part and remove unused variables
-  const allImages = project.images || [];
-  
   // Overview section component
   const OverviewSection = () => (
     <div className="border-t border-b border-[#0000FF]/60 ml-4 my-8 max-w-xs">
