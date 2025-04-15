@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import Script from 'next/script';
 
 // Add type definition for the Substack widget
@@ -27,7 +27,7 @@ export default function SubstackSection() {
   const loadTimer = useRef<NodeJS.Timeout | null>(null);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
 
-  const loadSubstackWidget = () => {
+  const loadSubstackWidget = useCallback(() => {
     // Define the Substack widget configuration
     window.SubstackFeedWidget = {
       substackUrl: "jonghan.substack.com",
@@ -84,9 +84,9 @@ export default function SubstackSection() {
 
     // Add styles after a slight delay to ensure the widget has loaded
     setTimeout(addCustomStyles, 1000);
-  };
+  }, [retryCount]);
 
-  const reloadWidget = () => {
+  const reloadWidget = useCallback(() => {
     setIsRetrying(true);
     setHasError(false);
     setRetryCount(prev => prev + 1);
@@ -116,7 +116,7 @@ export default function SubstackSection() {
     setTimeout(() => {
       setIsRetrying(false);
     }, 3000);
-  };
+  }, [loadSubstackWidget]);
 
   useEffect(() => {
     loadSubstackWidget();
@@ -127,7 +127,7 @@ export default function SubstackSection() {
         clearTimeout(loadTimer.current);
       }
     };
-  }, []);
+  }, [loadSubstackWidget]);
 
   return (
     <div className="mb-16">

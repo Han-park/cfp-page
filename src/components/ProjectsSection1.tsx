@@ -1,32 +1,17 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { Project, projects } from '@/types/project';
+import { projects } from '@/types/project';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { getDictionary } from '@/lib/dictionary';
-import { useEffect, useCallback } from 'react';
 import { Locale } from '@/i18n.config';
 
 export default function ProjectsSection1() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [dictionary, setDictionary] = useState<any>(null);
   const params = useParams();
   const lang = params.lang as Locale;
 
   // Filter projects with projectSeasonId: 1
   const season1Projects = projects.filter(project => project.projectSeasonId === 1);
-
-  const loadDictionary = useCallback(async () => {
-    if (lang) {
-      const dict = await getDictionary(lang);
-      setDictionary(dict);
-    }
-  }, [lang]);
-
-  useEffect(() => {
-    loadDictionary();
-  }, [loadDictionary]);
 
   return (
     <div className="mb-16">

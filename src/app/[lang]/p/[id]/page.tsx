@@ -1,5 +1,5 @@
 import { Locale } from '@/i18n.config';
-import { Project, projects } from '@/types/project';
+import { projects } from '@/types/project';
 import PageWrapper from '@/components/PageWrapper';
 import { getDictionary } from '@/lib/dictionary';
 import { JSX } from 'react';
@@ -29,7 +29,7 @@ export default async function ProjectDetailPage({
   params: { lang: Locale; id: string }
 }): Promise<JSX.Element> {
   const { lang, id } = params;
-  const dict = await getDictionary(lang);
+  await getDictionary(lang); // Keep for future use but avoid unused variable warning
   
   // Find the project with the matching ID
   const project = projects.find(p => p.id === id);
@@ -52,10 +52,8 @@ export default async function ProjectDetailPage({
   const localizedCollaborator = project.localizedContent?.[lang]?.collaborator || project.collaborator;
   const localizedPosition = project.localizedContent?.[lang]?.position || project.position;
   
-  // Get all images, including the thumbnail if it's not already in images
+  // Only keep the images part and remove unused variables
   const allImages = project.images || [];
-  const thumbnailImage = project.thumbnail ? [[project.thumbnail, 100], ...allImages] : allImages;
-  const [thumbnail, ...remainingImages] = thumbnailImage;
   
   // Overview section component
   const OverviewSection = () => (

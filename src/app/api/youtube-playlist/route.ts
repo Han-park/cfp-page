@@ -7,13 +7,7 @@ const PLAYLIST_URL = 'https://youtube.com/playlist?list=PLPsouz49twq3bRdJUHi-Ppx
 // Number of videos to fetch from the playlist
 const VIDEO_LIMIT = 6;
 
-// Define types for our data - simplified to only include title and thumbnail
-interface YouTubeVideo {
-  title: string;
-  thumbnailUrl: string;
-  videoUrl: string;
-}
-
+// Define types for oEmbed response
 interface OEmbedResponse {
   title: string;
   author_name: string;
@@ -28,8 +22,15 @@ interface OEmbedResponse {
   html: string;
 }
 
+// Define the video type that our API returns
+type VideoData = {
+  title: string;
+  thumbnailUrl: string;
+  videoUrl: string;
+};
+
 // Fallback videos in case the API fails - simplified
-const fallbackVideos = [
+const fallbackVideos: VideoData[] = [
   {
     title: "Building in Public Ep.1 | run club, vibe coding",
     thumbnailUrl: "https://i.ytimg.com/vi/QNsbjJggdmI/hqdefault.jpg",
