@@ -1,7 +1,9 @@
 {
   "navigation": {
     "projects": "프로젝트",
-    "about": "소개"
+    "about": "소개",
+    "back": "홈으로 돌아가기",
+    "viewDetails": "자세히 보기"
   },
   "home": {
     "title": "Community First Projects",

@@ -1,7 +1,9 @@
 {
   "navigation": {
     "projects": "Projects",
-    "about": "About"
+    "about": "About",
+    "back": "Back to Home",
+    "viewDetails": "View details"
   },
   "home": {
     "title": "Community First Projects",

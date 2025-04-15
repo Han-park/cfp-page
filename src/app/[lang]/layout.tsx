@@ -13,13 +13,15 @@ export const metadata: Metadata = {
   description: "Community-First Projects",
 };
 
-export default function Layout({
+export default async function Layout({
   children,
-  params: { lang }
+  params,
 }: {
   children: React.ReactNode;
   params: { lang: Locale };
 }) {
+  const lang = params.lang;
+  
   return (
     <html lang={lang}>
       <body className={`${inter.variable} font-sans antialiased`}>
