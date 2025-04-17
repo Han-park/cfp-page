@@ -8,6 +8,7 @@ import ProjectsSection2 from '@/components/ProjectsSection2';
 import ProjectsSection1 from '@/components/ProjectsSection1';
 import ArchiveSection from '@/components/ArchiveSection';
 import SubstackSection from '@/components/SubstackSection';
+// import YouTubeVlogs from '@/components/YouTubeVlogs'; // Don't use both YouTube components at once
 
 export default async function HomePage({
   params,

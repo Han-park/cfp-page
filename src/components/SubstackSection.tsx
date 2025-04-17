@@ -25,9 +25,10 @@ export default function SubstackSection() {
   const [retryCount, setRetryCount] = useState(0);
   const [isRetrying, setIsRetrying] = useState(false);
   const loadTimer = useRef<NodeJS.Timeout | null>(null);
-  const checkLoadTimer = useRef<NodeJS.Timeout | null>(null);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
 
+  // Define these functions without dependencies on each other
+  
   // Function to add custom styles to Substack feed
   const addCustomStyles = useCallback(() => {
     const style = document.createElement('style');
@@ -70,62 +71,27 @@ export default function SubstackSection() {
     setTimeout(addCustomStyles, 1000);
   }, [addCustomStyles]);
 
-  // Check if posts were actually loaded
-  const checkPostsLoaded = useCallback(() => {
-    const feedElement = document.getElementById('substack-feed-embed');
-    // Check if feed element exists and has actual post content
-    const hasPosts = feedElement && 
-      (feedElement.querySelectorAll('.sfw-post').length > 0 || 
-       feedElement.querySelectorAll('.sfw-title').length > 0);
-    
-    if (hasPosts) {
-      setIsLoaded(true);
-      setHasError(false);
-      setIsRetrying(false);
-    } else if (!isRetrying) {
-      // Only set error if we're not already retrying
-      setHasError(true);
-    }
-    
-    return hasPosts;
-  }, [isRetrying]);
-
   // Load the widget and check if it loaded successfully
   const loadSubstackWidget = useCallback(() => {
     configureWidget();
     
-    // Clear any existing check timer
-    if (checkLoadTimer.current) {
-      clearTimeout(checkLoadTimer.current);
-    }
-    
-    // Check if the widget loaded successfully - attempt multiple checks
-    const checkLoad = () => {
-      if (checkPostsLoaded()) return;
-      
-      // If posts not loaded yet, check again after a delay
-      checkLoadTimer.current = setTimeout(() => {
-        if (checkPostsLoaded()) return;
-        
-        // One more check after a longer delay
-        checkLoadTimer.current = setTimeout(() => {
-          if (!checkPostsLoaded()) {
-            setHasError(true);
-          }
-        }, 3000);
-      }, 3000);
-    };
-    
-    // Initial check after 3 seconds
-    loadTimer.current = setTimeout(checkLoad, 3000);
-  }, [configureWidget, checkPostsLoaded]);
+    // Check if the widget loaded successfully
+    loadTimer.current = setTimeout(() => {
+      const feedElement = document.getElementById('substack-feed-embed');
+      if (feedElement && feedElement.children.length <= 0) {
+        // Widget failed to load
+        setHasError(true);
+      } else {
+        setIsLoaded(true);
+        setHasError(false);
+      }
+    }, 3000);
+  }, [configureWidget]);
 
   // Reload the widget
   const reloadWidget = useCallback(() => {
     setIsRetrying(true);
     setHasError(false);
-    
-    // Increment retry counter
     setRetryCount(prev => prev + 1);
     
     // Clear existing content
@@ -149,35 +115,30 @@ export default function SubstackSection() {
     // Configure widget again
     loadSubstackWidget();
     
-    // Reset retry status after a delay if still not loaded
+    // Reset retry status after a delay
     setTimeout(() => {
-      if (!isLoaded) {
-        setIsRetrying(false);
-      }
-    }, 5000);
-  }, [loadSubstackWidget, isLoaded]);
+      setIsRetrying(false);
+    }, 3000);
+  }, [loadSubstackWidget]);
 
   // Automatic retry when error is detected
   useEffect(() => {
-    if (hasError && retryCount < 3 && !isRetrying) {
+    if (hasError && retryCount < 2 && !isRetrying) {
       reloadWidget();
     }
   }, [hasError, retryCount, isRetrying, reloadWidget]);
 
   // Initial load
   useEffect(() => {
-    configureWidget();
+    loadSubstackWidget();
     
     return () => {
       // Clean up timers on unmount
       if (loadTimer.current) {
         clearTimeout(loadTimer.current);
       }
-      if (checkLoadTimer.current) {
-        clearTimeout(checkLoadTimer.current);
-      }
     };
-  }, [configureWidget]);
+  }, [loadSubstackWidget]);
 
   return (
     <div className="mb-16">
@@ -195,7 +156,7 @@ export default function SubstackSection() {
             <p>Retrying to load posts...</p>
           </div>
         )}
-        {hasError && !isRetrying && (
+        {hasError && (
           <div className="text-sm text-black/70 mt-2 p-4 border border-gray-200 rounded">
             <p>Could not load Substack feed.</p>
             <button 
@@ -212,7 +173,9 @@ export default function SubstackSection() {
         src="https://substackapi.com/embeds/feed.js" 
         strategy="afterInteractive" 
         onLoad={() => {
-          loadSubstackWidget();
+          // Script loaded successfully
+          setIsLoaded(true);
+          setIsRetrying(false);
         }}
         onError={() => {
           // Script failed to load

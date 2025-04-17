@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -14,6 +14,14 @@ export default function YoutubeSection() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    // Set up cleanup function to prevent state updates after unmount
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     const fetchYoutubePlaylist = async () => {
@@ -21,12 +29,16 @@ export default function YoutubeSection() {
         setIsLoading(true);
         const response = await fetch('/api/youtube-playlist');
         
+        if (!isMounted.current) return;
+        
         if (!response.ok) {
           if (retryCount < 2) {
             // Retry up to 2 times with a delay
             setRetryCount(prev => prev + 1);
             setTimeout(() => {
-              fetchYoutubePlaylist();
+              if (isMounted.current) {
+                fetchYoutubePlaylist();
+              }
             }, 1000); // Wait 1 second before retrying
             return;
           }
@@ -34,6 +46,8 @@ export default function YoutubeSection() {
         }
         
         const data = await response.json();
+        
+        if (!isMounted.current) return;
         
         if (data.error) {
           throw new Error(data.error);
@@ -46,10 +60,13 @@ export default function YoutubeSection() {
         setVideos(data.videos);
         setError(null);
       } catch (error) {
+        if (!isMounted.current) return;
         console.error('Error fetching YouTube playlist:', error);
         setError(error instanceof Error ? error.message : 'Failed to load YouTube videos');
       } finally {
-        setIsLoading(false);
+        if (isMounted.current) {
+          setIsLoading(false);
+        }
       }
     };
 
@@ -87,7 +104,12 @@ export default function YoutubeSection() {
         {!isLoading && !error && videos.length > 0 && (
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
             {videos.map((video, index) => (
-              <Link href={video.videoUrl} key={index} target="_blank" className="block hover:opacity-90 transition-opacity">
+              <Link 
+                href={video.videoUrl} 
+                key={`youtube-section-${video.videoUrl}-${index}`} 
+                target="_blank" 
+                className="block hover:opacity-90 transition-opacity"
+              >
                 <div className="flex flex-col">
                   <div className="relative w-full aspect-video mb-2">
                     {video.thumbnailUrl && (

@@ -11,6 +11,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "CFP",
   description: "Community-First Projects",
+  icons: {
+    icon: '/cfp-favicon.ico',
+    shortcut: '/cfp-favicon.ico',
+  },
 };
 
 export default async function Layout({

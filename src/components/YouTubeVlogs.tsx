@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -16,26 +16,43 @@ export default function YouTubeVlogs() {
   const [vlogs, setVlogs] = useState<Vlog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    // Setup cleanup function
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     async function fetchVlogs() {
       try {
         setLoading(true);
         const response = await fetch('/api/youtube-playlist');
+        
+        if (!isMounted.current) return;
+        
         if (!response.ok) {
           throw new Error(`API Error: ${response.statusText}`);
         }
         const data = await response.json();
+        
+        if (!isMounted.current) return;
+        
         if (data.error) {
           throw new Error(data.error);
         }
         setVlogs(data.videos || []);
       } catch (err: unknown) {
+        if (!isMounted.current) return;
         console.error("Failed to fetch vlogs:", err);
         const message = err instanceof Error ? err.message : 'Failed to load vlogs.';
         setError(message);
       } finally {
-        setLoading(false);
+        if (isMounted.current) {
+          setLoading(false);
+        }
       }
     }
 
@@ -59,7 +76,12 @@ export default function YouTubeVlogs() {
       <h2 className="text-[#0000FF] font-normal mb-4">Latest Vlogs</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {vlogs.map((vlog, index) => (
-          <Link href={vlog.videoUrl} key={index} target="_blank" rel="noopener noreferrer">
+          <Link 
+            href={vlog.videoUrl} 
+            key={`vlog-${vlog.videoUrl}-${index}`} 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
             <div className="border border-black/30 hover:border-black/60 transition-colors duration-200 group">
               <div className="aspect-video relative bg-gray-200">
                 {vlog.thumbnailUrl && vlog.thumbnailUrl !== 'N/A' ? (
