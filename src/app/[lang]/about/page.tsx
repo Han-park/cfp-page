@@ -3,7 +3,6 @@ import { Locale } from '@/i18n.config';
 import PageWrapper from '@/components/PageWrapper';
 import { getDictionary } from '@/lib/dictionary';
 import { JSX } from 'react';
-import Image from 'next/image';
 
 export default async function AboutPage({
   params,
@@ -15,20 +14,14 @@ export default async function AboutPage({
   
   return (
     <PageWrapper lang={lang}>
-      <div className="grid grid-cols-2 gap-8 mb-8">
-        {/* Left column - Thumbnail */}
-        <div className="relative aspect-square bg-[#D3D3D3] border border-black/50">
-          <Image 
-            src="/img/thumbnail/ww.png" 
-            alt="About"
-            fill
-            className="object-cover"
-          />
-        </div>
-        
-        {/* Right column - Content */}
-        <div className="text-[#0000FF]">
-          <p className="mb-4">{dict.home.description}</p>
+      <div className="max-w-2xl">
+        {/* About Content */}
+        <div className="text-[#0000FF] mb-8">
+          <div className="mb-6">
+            {dict.home.description.split('\n').map((paragraph, index) => (
+              paragraph ? <p key={index} className="mb-3">{paragraph}</p> : <br key={index} />
+            ))}
+          </div>
           <ul className="list-disc ml-6 space-y-2">
             {dict.home.bulletPoints.map((point, index) => (
               <li key={index}>{point}</li>
@@ -44,6 +37,30 @@ export default async function AboutPage({
               </button>
             </Link>
           </div>
+        </div>
+        
+        {/* Contact Section */}
+        <div className="text-[#0000FF] mt-12">
+          <h2 className="text-xl font-semibold mb-4">Contact</h2>
+          <ul className="space-y-2">
+            <li>
+              <span className="font-medium">Email:</span>{' '}
+              <a href="mailto:me@han-park.info" className="hover:underline">
+                me@han-park.info
+              </a>
+            </li>
+            <li>
+              <span className="font-medium">LinkedIn:</span>{' '}
+              <a 
+                href="https://www.linkedin.com/in/han0park/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Jong-Han Park (Founder/Ops)
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </PageWrapper>

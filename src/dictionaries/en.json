@@ -7,12 +7,11 @@
   },
   "home": {
     "title": "Community First Projects",
-    "description": "A lifestyle technology studio enforced by AI",
+    "description": "Community First Projects (CFP) is a studio with technology that helps social lifestyle. \nWe create businesses that connect people together. Our technical categories are in the following three areas:",
     "bulletPoints": [
-      "Technology is shaped by culture—we believe people should have control, not just algorithms.",
-      "We create tools that give people power, making interactions more meaningful.",
-      "Creative work needs consistency, and we help people build it.",
-      "This March, we're launching a new app to bring technology and creativity together."
+      "Content creation & branding",
+      "Software development",
+      "Community management"
     ],
     "newsletter": "Newsletter (Korean)"
   }
