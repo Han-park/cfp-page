@@ -18,7 +18,10 @@ export default function ProjectsSection2() {
         <div className='flex justify-between'>
           <div className="flex gap-8">
             <h1 className="text-4xl text-[#0000FF] font-bold">2.0</h1>
-            <p className="text-base font-bold leading-tight text-[#0000FF]">라이프스타일 유틸리티 앱<br/>커뮤니티 웹사이트</p>
+            <p className="text-base font-bold leading-tight text-[#0000FF]">
+              {lang === 'en' ? 'Lifestyle Utility Apps' : '라이프스타일 유틸리티 앱'}<br/>
+              {lang === 'en' ? 'Community Websites' : '커뮤니티 웹사이트'}
+            </p>
           </div>
           <p className='text-base font-semibold leading-tight text-[#0000FF]'>Feb - Mar 2025</p>
         </div>
@@ -35,7 +38,7 @@ export default function ProjectsSection2() {
                   >
                     <Image 
                       src={project.thumbnail}
-                      alt={project.title}
+                      alt={lang === 'en' && project.localizedContent?.en?.title ? project.localizedContent.en.title : project.title}
                       fill
                       className="object-cover"
                     />
@@ -43,8 +46,16 @@ export default function ProjectsSection2() {
                   
                   {/* Right column - Title and Description */}
                   <div className="flex flex-col justify-top max-w-[250px]">
-                    <h3 className="text-lg font-semibold text-[#0000FF] mb-1">{project.title}</h3>
-                    <p className="text-xs text-[#0000FF]">{project.description}</p>
+                    <h3 className="text-lg font-semibold text-[#0000FF] mb-1">
+                      {lang === 'en' && project.localizedContent?.en?.title 
+                        ? project.localizedContent.en.title 
+                        : project.title}
+                    </h3>
+                    <p className="text-xs text-[#0000FF]">
+                      {lang === 'en' && project.localizedContent?.en?.description 
+                        ? project.localizedContent.en.description 
+                        : project.description}
+                    </p>
                   </div>
                 </div>
               </div>

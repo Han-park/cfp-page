@@ -18,7 +18,10 @@ export default function ProjectsSection3() {
         <div className='flex justify-between'>
           <div className="flex gap-8">
             <h1 className="text-4xl text-[#0000FF] font-bold">3.0</h1>
-            <p className="text-base font-bold leading-tight text-[#0000FF]">라이프스타일을 위한 커뮤니티 툴 (작업 중)<br/>다큐멘터리 콘텐츠 제작</p>
+            <p className="text-base font-bold leading-tight text-[#0000FF]">
+              {lang === 'en' ? 'Community Tools for Lifestyle (WIP)' : '라이프스타일을 위한 커뮤니티 툴 (작업 중)'}<br/>
+              {lang === 'en' ? 'Documentary Content Production' : '다큐멘터리 콘텐츠 제작'}
+            </p>
           </div>
           <p className='text-base font-semibold leading-tight text-[#0000FF]'>Current</p>
         </div>
@@ -36,7 +39,7 @@ export default function ProjectsSection3() {
                     >
                       <Image 
                         src={project.thumbnail}
-                        alt={project.title}
+                        alt={lang === 'en' && project.localizedContent?.en?.title ? project.localizedContent.en.title : project.title}
                         fill
                         className="object-cover"
                       />
@@ -44,8 +47,16 @@ export default function ProjectsSection3() {
                     
                     {/* Right column - Title and Description */}
                     <div className="flex flex-col justify-top max-w-[250px]">
-                      <h3 className="text-xl font-semibold text-[#0000FF] mb-1">{project.title}</h3>
-                      <p className="text-sm text-[#0000FF]">{project.description}</p>
+                      <h3 className="text-xl font-semibold text-[#0000FF] mb-1">
+                        {lang === 'en' && project.localizedContent?.en?.title 
+                          ? project.localizedContent.en.title 
+                          : project.title}
+                      </h3>
+                      <p className="text-sm text-[#0000FF]">
+                        {lang === 'en' && project.localizedContent?.en?.description 
+                          ? project.localizedContent.en.description 
+                          : project.description}
+                      </p>
                     </div>
                   </div>
                 </div>

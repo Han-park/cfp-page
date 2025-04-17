@@ -62,9 +62,9 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Workout Works',
-        description: 'Workout Works is a community-driven app that helps you get fit.',
-        details: 'Workout Works is a fitness app designed to build a supportive community around your fitness journey. Join workout groups, track progress, and stay motivated together. To request access, email me at me@han-park.info',
-        buttonText: 'Visit the app',
+        description: 'An app that helps you reach your protein intake goals and track your workouts and body changes at the gym',
+        details: 'I created this app in February 2025 with my friend Sangmin when we decided to get our body profiles taken in the summer and needed to build our bodies systematically.\nFor muscle growth, not only is exercise important, but you need to consume about twice your body weight in grams of protein (160g if you weigh 80kg). I felt the importance of diet when I prepared for my first body profile 3 years ago.\nI originally made this for diet tracking, then added workout tracking features. Rather than using other apps that recommend workouts, I used to record my daily exercises in a notepad, but it was annoying to press buttons multiple times to enter repetitions and weights. So I used GPT to record with the same experience but calculate volume by exercise.\nI use this app every day. If you\'d like to try it, you can click the button below. For inquiries, please contact me@han-park.info (Jong-Han Park)!',
+        buttonText: 'Try the app',
         category: 'Lifestyle Utility App',
         year: '2025',
         scope: 'Vibe Coding',
@@ -93,8 +93,8 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Oxford 5000',
-        description: 'The Oxford 5000 is a custom word quiz app empowered by GPT.',
-        details: 'To request an access, email me at me@han-park.info',
+        description: 'An English vocabulary quiz app based on the Oxford 5000 word set, allowing you to add your own words to your wordbook',
+        details: 'I made this because I didn\'t want to spend 20,000 won per month on Malhaeoboca. I selected intermediate-level and above words from the Oxford 5000 word set created by Oxford University. You can look at English meanings and example sentences for words and fill in the blanks.\nAn algorithm adjusts the review cycle based on whether you get answers right or wrong, and you can also see hints. I use it with the goal of getting 10 correct answers a day.\nYou can sign up at the link below to try it out. If you have any questions, please email me at me@han-park.info (Jonghan Park).',
         buttonText: 'Visit the app',
         category: 'Lifestyle Utility App',
         year: '2025',
@@ -123,9 +123,9 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Collector',
-        description: 'Collector is a bookmark app aided by GPT.',
-        details: 'Full version will be released soon. To request an access, email me at me@han-park.info',
-        buttonText: 'Visit the app',
+        description: 'A bookmark app where GPT summarizes and categorizes links you paste. You can also see trends in your bookmark creation in graph form.',
+        details: 'I used to collect bookmarks in a Notion Database, but at some point it became tedious and I just started pasting links, making them hard to recognize when I came back to them later. So I created this bookmark app.\nMeanwhile, I have a daily metric that I continuously monitor, which is the number of articles I read weekly. When I read less, my life becomes chaotic and my thinking becomes less clear. To check and manage this, I added a weekly bookmark creation trend graph to the profile page.\nIt\'s currently deployed as a web app, and I plan to re-release it with enhanced social features. You can try the current version by clicking the button below. If you have any questions, please email me@han-park.info (Jonghan Park)!',
+        buttonText: 'Try the app',
         category: 'Lifestyle Utility App',
         year: '2025',
         scope: 'Vibe Coding',
@@ -156,13 +156,14 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Daejangang Website',
-        description: 'Daejangang House is a platform for early stage entreprenuers mostly in tech industry. Located in Gwangjin-gu, Seoul.',
-        details: 'Han Park, Co-founder of Daejangang House is now working on the design of the website, editing newsletter, and building extended community. To request a visit, email me at me@han-park.info',
+        description: 'Website for Daejangang, a co-living house for IT entrepreneurs',
+        details: 'As a resident member of Daejangang House since its establishment in February 2023, I developed the introductory website. We were originally using a Notion page, but Seokbeom said it was too basic.\nI applied photos taken during the Daejangang 2025 calendar shoot and designed it using Daejangang\'s brand colors, black and lemon. Additionally, I applied multilingual options throughout the site to develop Daejangang into a global hacker house in the future.\nIn May 2025, when we launch the Daejangang community membership, we plan to expand functionality and integrate it with messenger to use as a platform.',
         buttonText: 'Visit the website',
         category: 'Community Website',
         year: '2025',
         scope: 'Web Design, Photography',
-        position: 'Daejangang Resident Member'
+        position: 'Daejangang Resident Member',
+        collaborator: 'Hong Seokbeom'
       }
     }
   },
@@ -188,14 +189,14 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Crycheeseburger Reels',
-        description: 'Crycheeseburger Reels are short-form video content for Instagram.',
-        details: 'Social media content produced for Crycheeseburger, showcasing the brand through short videos. For inquiries, please email me at me@han-park.info',
+        description: 'Created several short-form videos about Korean burger franchise, CryCheesburger',
+        details: 'I connected with the Crycheeseburger team and planned, appeared in, and produced several short-form videos. It was a really fun project. Check out the reels content on Crycheeseburger\'s Instagram!!',
         buttonText: 'Visit Instagram',
         category: 'Short-form Video Content',
         year: '2024',
-        scope: 'Casting, Planning, Production',
+        scope: 'Planning, Appearing, Production',
         position: 'Crycheeseburger Regular Customer',
-        collaborator: 'Crycheeseburger Team, Lee Chaeyoon'
+        collaborator: 'Lee Chaeyoon, Daejangang House members, Crycheeseburger Team'
       }
     }
   },
@@ -219,13 +220,14 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Musa Fitness Challenge',
-        description: 'Musa Fitness Challenge is a creative project helping participants form healthy habits.',
-        details: 'A community-based challenge for achieving fitness goals, where participants receive motivation together and develop healthy lifestyle habits. For more information, please contact me@han-park.info',
+        description: '2024 season branding and art creative for Musa Fitness Challenge',
+        details: 'Musa Fitness Challenge is a project created and operated by Gain, who lived with me in Daejangang. Starting with creating the logo when this project began in 2023, I also made a new logo and t-shirts for the 2024 season. I also did photography from time to time and participated as a DJ at the pool party.\nThe logo expresses a dynamic mood befitting a fitness brand, and when making t-shirts, I adopted background colors within achromatic colors so that they would be different for each team but not too flashy for Korean members to wear comfortably to the gym.',
         buttonText: 'CFP Instagram',
         category: 'Creative',
         year: '2024',
-        scope: 'Branding, Art, Photography',
-        position: 'CFP Operator'
+        scope: 'Branding, Art, Photography, DJing',
+        position: 'CFP Operator',
+        collaborator: 'Shin Gain'
       }
     }
   },
@@ -249,14 +251,14 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Sweaterhouse',
-        description: 'Sweaterhouse is an independent knitwear brand in Korea.',
-        details: 'An independent Korean knitwear brand showcasing distinctive products with high-quality materials and design. I supported brand growth strategy and content production. For more information, please contact me@han-park.info',
+        description: 'Campaign planning and photography for Sweaterhouse\'s early works',
+        details: 'Sweaterhouse is a knitwear brand based on whole garment technology. A relationship that started as neighborhood acquaintances led to introducing team members, and I was in charge of photography or planning and location for 5 campaign photoshoots.',
         buttonText: 'Visit Instagram',
         category: 'Creative',
         year: '2024',
-        scope: 'Photography',
+        scope: 'Planning, Location, Photography',
         position: 'Sweaterhouse Growth Advisor',
-        collaborator: 'Kim Sangmin, Kim Hyerim'
+        collaborator: 'Kim Sangmin, Kim Hyerim and others'
       }
     }
   },
@@ -281,9 +283,9 @@ export const projects: Project[] = [
     ],
     localizedContent: {
       en: {
-        title: 'Daejangang Photo Calendar',
-        description: 'Daejangang Photo Calendar is a creative project featuring community members.',
-        details: 'A photo calendar featuring the daily lives and personalities of Daejangang community members, enhancing community cohesion and introducing members in a creative way. For more information, please contact me@han-park.info',
+        title: 'Daejang-gan Calendar Photoshoot',
+        description: 'Photoshoot for the 2025 Daejangang calendar',
+        details: 'Inspired by the "Infinite Challenge" calendar photoshoot episode, we picked a day with Daejangang members and did a photoshoot around the office space and Incheon waterfront.',
         buttonText: 'Visit Instagram',
         category: 'Creative',
         year: '2024',
@@ -314,8 +316,8 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Connect & Chill',
-        description: 'Connect & Chill is a social event where people from various fields gather to network.',
-        details: 'A social event where creative talents from various fields gather to exchange ideas and discover collaboration opportunities. It takes place in a relaxed atmosphere and includes DJ sessions. For participation inquiries, please contact me@han-park.info',
+        description: 'A networking party co-hosted by Lobby D and Daejang-gan House',
+        details: 'We co-hosted this event after receiving a proposal from the founder of Lobby D, a P2P platform that helps people find who they\'re looking for. We rented a gallery space in Bukchon for the event, and 150 people attended.',
         buttonText: 'CFP Instagram',
         category: 'Event Planning and Operation',
         year: '2024',
@@ -348,14 +350,14 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: 'Pool Run',
-        description: 'Pool Run is a unique event combining swimming and running.',
-        details: 'A new type of sports event combining swimming and running, pursuing both healthy lifestyle habits and fun. For registration and more information, please contact me@han-park.info',
+        description: 'An event where participants go running then swim in the Han-river pool in Seoul',
+        details: 'This event started when I was wondering with Seungdeok and Jaeyong if there was a fresh and chill running event we could do with friends. The Hangang Park swimming pool happened to be open, so we organized this event. It took place over 2 sessions with 10 people participating in each.\nThe Hangang swimming pool entry fee is only 5,000 won, so I definitely recommend going in summer...',
         buttonText: 'CFP Instagram',
         category: 'Event Planning and Operation',
         year: '2024',
         scope: 'Branding, Event Operation, Photography',
         position: 'CFP Operator',
-        collaborator: 'Park Seungdeok'
+        collaborator: 'Park Seungdeok, Seo Jaeyong'
       }
     }
   },
@@ -381,9 +383,9 @@ export const projects: Project[] = [
     localizedContent: {
       en: {
         title: '00runners Web App (2023)',
-        description: '00runners Web App is a dedicated community app for a running club.',
-        details: 'A web app developed for the 00runners running club, providing various functions such as member activity management, event sharing, and communication. For more information, please contact me@han-park.info',
-        buttonText: 'Visit Website',
+        description: 'A dedicated community web app for the 00runners running crew. Allows attendance check-in, rankings lookup, and club rules viewing',
+        details: 'As someone in the tech startup industry, I thought that the running crew 00runners, where I was president at the time, also needed metrics to distinguish community success and failure. So I created an attendance check system and converted the number of season attendance checks into rankings for a leaderboard.\nAfter implementing this system, there were also crew members who came out every day to maintain their #1 position.',
+        buttonText: 'Read the creation essay',
         category: 'Dedicated Community App',
         year: '2023',
         scope: 'Planning, Design/Development, Operation',
@@ -393,10 +395,10 @@ export const projects: Project[] = [
   },
   {
     id: 'runpotify',
-    title: 'Runpotify (2021)',
+    title: 'Runpotify Demo (2021)',
     thumbnail: '/img/project/runpotify/thumb.png',
-    description: 'Runpotify는 달리기와 음악을 결합한 라이프스타일 소셜 앱 데모입니다.',
-    details: '달리기 속도와 거리에 맞춰 음악을 추천해주는 앱 데모로, 사용자의 런닝 경험을 향상시킵니다. 이 프로젝트는 개념 증명 단계에서 개발되었습니다. 더 알아보려면 me@han-park.info로 연락주세요.',
+    description: 'Runpotify는 달리기와 음악을 결합한 라이프스타일 소셜 앱입니다.',
+    details: '러닝할 때 들을 음악 플레이리스트와 러닝 코스를 추천해주는 앱으로, 러닝크루 00runners 안에서의 토이 프로젝트로 시작했습니다. 코로나 시절, 오프라인에서 만나 뛰지 않더라도 유대감을 느낄 수 있는 장치를 고민하다가 기획했습니다.\n 당시 팀 내에 기술을 구현할 능력이 부족하여 데모를 실제 앱으로 만드는 단계에서 중단되었습니다.',
     url: 'https://runpotify.github.io/preview/',
     buttonText: '데모 링크',
     category: '라이프스타일 소셜 앱 (데모)',
@@ -405,14 +407,15 @@ export const projects: Project[] = [
     collaborator: '조연우',
     projectSeasonId: 'a',
     images: [
-      ['/img/project/runpotify/thumb.png', 100]
+      ['/img/project/runpotify/runpotify-1.png', 80],
+      ['/img/project/runpotify/runpotify-2.jpg', 100]
     ],
     localizedContent: {
       en: {
-        title: 'Runpotify (2021)',
-        description: 'Runpotify is a lifestyle social app demo combining running and music.',
-        details: 'An app demo that recommends music based on running speed and distance, enhancing the user\'s running experience. This project was developed at the proof of concept stage. To learn more, please contact me@han-park.info',
-        buttonText: 'GitHub Repository',
+        title: 'Runpotify Demo (2021)',
+        description: 'Runpotify is a lifestyle social app that combines running and music',
+        details: 'An app that recommends music playlists and running courses for running, it started as a toy project within the running crew 00runners. During COVID, we came up with this idea while thinking about ways to feel connected even when not meeting offline to run.\nAt the time, the team lacked the ability to implement the technology, and the project was discontinued at the stage of turning the demo into a real app.',
+        buttonText: 'Demo Link',
         category: 'Lifestyle Social App (Demo)',
         year: '2021',
         scope: 'Demo Production',
@@ -422,12 +425,12 @@ export const projects: Project[] = [
   },
   {
     id: 'he',
-    title: 'Higher Efficiency (2021)',
+    title: 'Higher Efficiency Web (2021)',
     thumbnail: '/img/project/he/thumb.png',
     description: '줌터디를 위한 유틸리티 소셜 웹앱',
-    details: '일상 생산성을 높이기 위한 습관 관리와 목표 달성 기능을 제공하는 소셜 앱입니다. 사용자들은 서로의 진행 상황을 공유하고 동기부여를 받을 수 있습니다. 자세한 정보는 me@han-park.info로 문의해주세요.',
+    details: '제가 대학생활을 하던 코로나 시절, 학우들을 대면으로 만나지 못하던 친구들은 유대감을 원했고, 줌터디라는 개념이 만들어져 유행하기 시작했습니다. 줌터디는 화상 컨퍼런스 콜에 함께 접속해 마이크를 끄고 공부하는 모습을 공유하는 가상 독서실입니다. \n 제가 만든 Higher Definition 이라는 대학생 프로젝트 팀은 줌터디를 운영하면서 줌터디에 오는 지인들끼리 교류할 수 있는 장치를 원했습니다. 그래서 운영자가 방문자들에게 그날 공부한 내용을 물어보고 기록하여 인스타그램 계정에 올리고 있었습니다. 그러나 이 일을 도맡아서 했던 친구는 매일 이미지를 만들고 업로드하는 것에 지쳤습니다. \n 그래서 제가 학교에서 IoT 수업을 수강하며 배운 php와 mysql, html로 간단한 웹앱을 제작했고, 줌터디가 운영된 한달 간 사용자들이 즐겨 주었습니다.',
     url: 'https://www.notion.so/han-park/Copy-of-HE-Web-fe5d3106ad5e4cc78e05157a5469d9e7',
-    buttonText: '노션 후기',
+    buttonText: '제작 후기',
     category: '라이프스타일 소셜 앱',
     year: '2021',
     scope: '기획, 디자인/개발',
@@ -435,48 +438,20 @@ export const projects: Project[] = [
     collaborator: '최동혁 외 HD 멤버들',
     projectSeasonId: 'a',
     images: [
-      ['/img/thumbnail/higher-efficiency.png', 100]
+      ['/img/project/he/he-1.png', 70],
+      ['/img/project/he/he-2.png', 80]
     ],
     localizedContent: {
       en: {
-        title: 'Higher Efficiency (2021)',
-        description: 'Higher Efficiency is a lifestyle social app for improving daily productivity.',
-        details: 'A social app providing habit management and goal achievement features to enhance daily productivity. Users can share their progress with each other and receive motivation. For more information, please contact me@han-park.info',
-        buttonText: 'GitHub Repository',
+        title: 'Higher Efficiency Web (2021)',
+        description: 'A utility social web app for "Zoom study" sessions',
+        details: 'During the COVID era when I was in college, friends who couldn\'t meet their classmates in person wanted connection, and the concept of "Zoom study" was created and became popular. Zoom study is a virtual study room where people connect to a video conference call, mute their microphones, and share the scene of them studying.\nThe college project team I created called Higher Definition was running Zoom study sessions and wanted a way for acquaintances who came to Zoom study to interact. So the operator would ask visitors what they studied that day, record it, and post it on the Instagram account. However, the friend who was in charge of this work got tired of creating and uploading images every day.\nSo I created a simple web app using php, mysql, and html that I learned in my IoT class at school, and users enjoyed it during the month that Zoom study was operated.',
+        buttonText: 'Production review',
         category: 'Lifestyle Social App',
         year: '2021',
         scope: 'Planning, Design/Development',
         position: 'HD Member',
         collaborator: 'Choi Donghyuk and other HD members'
-      }
-    }
-  },
-  {
-    id: 'Chaoreum-web',
-    title: '차오름웹 (2017)',
-    thumbnail: '/img/thumbnail/chaoreum-web.png',
-    description: '차오름웹은 고등학생들을 위한 커뮤니티 플랫폼 데모입니다.',
-    details: '분당지역 고등학교 학생들을 위한 커뮤니티 플랫폼 데모로, 학교 간 교류와 정보 공유를 촉진합니다. 이 프로젝트는 BLU 활동의 일환으로 기획되었습니다. 더 알아보려면 me@han-park.info로 연락주세요.',
-    url: 'https://github.com/hanpark/chaoreum',
-    buttonText: 'GitHub 저장소',
-    category: '커뮤니티 플랫폼 데모',
-    year: '2021',
-    scope: '기획 및 데모 제작',
-    position: '분당지역고등학교학생회연합(BLU) 의장',
-    projectSeasonId: 'a',
-    images: [
-      ['/img/thumbnail/chaoreum-web.png', 100]
-    ],
-    localizedContent: {
-      en: {
-        title: 'Chaoreum Web (2017)',
-        description: 'Chaoreum Web is a community platform demo for high school students.',
-        details: 'A community platform demo for high school students in the Bundang area, promoting inter-school exchange and information sharing. This project was planned as part of BLU activities. To learn more, please contact me@han-park.info',
-        buttonText: 'GitHub Repository',
-        category: 'Community Platform Demo',
-        year: '2021',
-        scope: 'Planning and Demo Production',
-        position: 'Chairman of Bundang Local High School Student Council Union (BLU)'
       }
     }
   }

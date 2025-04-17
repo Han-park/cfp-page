@@ -16,7 +16,9 @@ export default function ArchiveSection() {
     <div className="mb-16">
       <div className='flex justify-between'>
         <div className="flex gap-8">
-          <h1 className="text-2xl text-[#0000FF] font-bold">Archive</h1>
+          <h1 className="text-2xl text-[#0000FF] font-bold">
+            {lang === 'en' ? 'Archive' : '아카이브'}
+          </h1>
         </div>
         <p className='text-base font-semibold leading-tight text-[#0000FF]'>2017 - 2023</p>
       </div>
@@ -33,7 +35,7 @@ export default function ArchiveSection() {
                 >
                   <Image 
                     src={project.thumbnail}
-                    alt={project.title}
+                    alt={lang === 'en' && project.localizedContent?.en?.title ? project.localizedContent.en.title : project.title}
                     fill
                     className="object-cover"
                   />
@@ -41,8 +43,16 @@ export default function ArchiveSection() {
                 
                 {/* Right column - Title and Description */}
                 <div className="flex flex-col justify-top max-w-[250px]">
-                  <h3 className="text-lg font-semibold text-[#0000FF] mb-1">{project.title}</h3>
-                  <p className="text-xs text-[#0000FF]">{project.description}</p>
+                  <h3 className="text-lg font-semibold text-[#0000FF] mb-1">
+                    {lang === 'en' && project.localizedContent?.en?.title 
+                      ? project.localizedContent.en.title 
+                      : project.title}
+                  </h3>
+                  <p className="text-xs text-[#0000FF]">
+                    {lang === 'en' && project.localizedContent?.en?.description 
+                      ? project.localizedContent.en.description 
+                      : project.description}
+                  </p>
                 </div>
               </div>
             </div>

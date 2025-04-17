@@ -17,7 +17,10 @@ export default function ProjectsSection1() {
       <div className='flex justify-between'>
         <div className="flex gap-8">
           <h1 className="text-4xl text-[#0000FF] font-bold">1.0</h1>
-          <p className="text-base font-bold leading-tight text-[#0000FF]">크리에이티브<br/>이벤트 플래닝과 운영</p>
+          <p className="text-base font-bold leading-tight text-[#0000FF]">
+            {lang === 'en' ? 'Creative' : '크리에이티브'}<br/>
+            {lang === 'en' ? 'Event Planning and Operation' : '이벤트 플래닝과 운영'}
+          </p>
         </div>
         <p className='text-base font-semibold leading-tight text-[#0000FF]'>2024</p>
       </div>
@@ -34,7 +37,7 @@ export default function ProjectsSection1() {
                 >
                   <Image 
                     src={project.thumbnail}
-                    alt={project.title}
+                    alt={lang === 'en' && project.localizedContent?.en?.title ? project.localizedContent.en.title : project.title}
                     fill
                     className="object-cover"
                   />
@@ -42,8 +45,16 @@ export default function ProjectsSection1() {
                 
                 {/* Right column - Title and Description */}
                 <div className="flex flex-col justify-top max-w-[250px]">
-                  <h3 className="text-lg font-semibold text-[#0000FF] mb-1">{project.title}</h3>
-                  <p className="text-xs text-[#0000FF]">{project.description}</p>
+                  <h3 className="text-lg font-semibold text-[#0000FF] mb-1">
+                    {lang === 'en' && project.localizedContent?.en?.title 
+                      ? project.localizedContent.en.title 
+                      : project.title}
+                  </h3>
+                  <p className="text-xs text-[#0000FF]">
+                    {lang === 'en' && project.localizedContent?.en?.description 
+                      ? project.localizedContent.en.description 
+                      : project.description}
+                  </p>
                 </div>
               </div>
             </div>
