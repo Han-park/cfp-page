@@ -17,13 +17,13 @@ export default function ProjectsSection2() {
       <div className="mb-16">
         <div className='flex justify-between'>
           <div className="flex gap-8">
-            <h1 className="text-4xl text-[#0000FF] font-bold">2.0</h1>
-            <p className="text-base font-bold leading-tight text-[#0000FF]">
+            <h1 className="md:text-4xl text-2xl text-[#0000FF] font-bold">2.0</h1>
+            <p className="md:text-base text-sm font-bold leading-tight text-[#0000FF]">
               {lang === 'en' ? 'Lifestyle Utility Apps' : '라이프스타일 유틸리티 앱'}<br/>
               {lang === 'en' ? 'Community Websites' : '커뮤니티 웹사이트'}
             </p>
           </div>
-          <p className='text-base font-semibold leading-tight text-[#0000FF]'>Feb - Mar 2025</p>
+          <p className='md:text-base text-sm font-semibold leading-tight text-[#0000FF]'>Feb - Mar 2025</p>
         </div>
         <hr className="border-t border-1 border-[#0000FF] my-4" />
         <div className="flex gap-8 flex-wrap">

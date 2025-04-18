@@ -1,5 +1,5 @@
 import { Locale } from '@/i18n.config';
-import GitHubActivity from '@/components/GitHubActivity';
+// import GitHubActivity from '@/components/GitHubActivity';
 import PageWrapper from '@/components/PageWrapper';
 import YoutubeSection from '@/components/YoutubeSection';
 import { JSX } from 'react';
@@ -27,7 +27,7 @@ export default async function HomePage({
       <ProjectsSection2 />
       <ProjectsSection1 />
       <ArchiveSection />
-      <GitHubActivity />
+      {/* <GitHubActivity /> */}
     </PageWrapper>
   );
 }

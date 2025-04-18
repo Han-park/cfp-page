@@ -17,9 +17,9 @@ export default function ProjectsSection3() {
       <div className="mb-16">
         <div className='flex justify-between'>
           <div className="flex gap-8">
-            <h1 className="text-4xl text-[#0000FF] font-bold">3.0</h1>
-            <p className="text-base font-bold leading-tight text-[#0000FF]">
-              {lang === 'en' ? 'Community Tools for Lifestyle (WIP)' : '라이프스타일을 위한 커뮤니티 툴 (작업 중)'}<br/>
+            <h1 className="md:text-4xl text-2xl text-[#0000FF] font-bold">3.0</h1>
+            <p className="md:text-base text-sm font-bold leading-tight text-[#0000FF]">
+              {lang === 'en' ? 'Lifestyle Community Tools (WIP)' : '라이프스타일을 커뮤니티 툴 (작업 중)'}<br/>
               {lang === 'en' ? 'Documentary Content Production' : '다큐멘터리 콘텐츠 제작'}
             </p>
           </div>

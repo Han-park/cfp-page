@@ -16,11 +16,11 @@ export default function ArchiveSection() {
     <div className="mb-16">
       <div className='flex justify-between'>
         <div className="flex gap-8">
-          <h1 className="text-2xl text-[#0000FF] font-bold">
+          <h1 className="md:text-2xl text-xl text-[#0000FF] font-bold">
             {lang === 'en' ? 'Archive' : '아카이브'}
           </h1>
         </div>
-        <p className='text-base font-semibold leading-tight text-[#0000FF]'>2017 - 2023</p>
+        <p className='md:text-base text-sm font-semibold leading-tight text-[#0000FF]'>2017 - 2023</p>
       </div>
       <hr className="border-t border-1 border-[#0000FF] my-4" />
       <div className="flex gap-8 flex-wrap">

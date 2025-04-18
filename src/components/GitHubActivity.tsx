@@ -12,6 +12,7 @@ interface GitHubCommit {
   repository: {
     name: string;
   };
+  html_url: string;
 }
 
 interface RepoCommit {
@@ -25,8 +26,15 @@ interface RepoCommit {
   html_url: string;
 }
 
+interface RateLimit {
+  limit: number;
+  remaining: number;
+  reset: number;
+}
+
 export default function GitHubActivity() {
   const [recentCommits, setRecentCommits] = useState<GitHubCommit[]>([]);
+  const [rateLimit, setRateLimit] = useState<RateLimit | null>(null);
 
   useEffect(() => {
     const repos = [
@@ -38,6 +46,18 @@ export default function GitHubActivity() {
       'tie-app-0',
       'collector'
     ];
+
+    const fetchRateLimit = async () => {
+      try {
+        const response = await fetch('https://api.github.com/rate_limit');
+        if (response.ok) {
+          const data = await response.json();
+          setRateLimit(data.resources.core);
+        }
+      } catch (error) {
+        console.error('Error fetching rate limit:', error);
+      }
+    };
 
     const fetchCommits = async () => {
       try {
@@ -76,6 +96,7 @@ export default function GitHubActivity() {
       }
     };
 
+    fetchRateLimit();
     fetchCommits();
   }, []);
 
@@ -92,6 +113,11 @@ export default function GitHubActivity() {
     return `${Math.floor(diffInSeconds / 86400)} days ago`;
   };
 
+  const formatResetTime = (resetTimestamp: number) => {
+    const resetDate = new Date(resetTimestamp * 1000);
+    return resetDate.toLocaleTimeString();
+  };
+
   return (
     <div className="mb-16">
       <div className='flex justify-between'>
@@ -102,6 +128,14 @@ export default function GitHubActivity() {
           </p>
         </Link>
       </div>
+      {rateLimit && (
+        <div className="mb-4 p-2 border border-black/50 bg-gray-50">
+          <p className="text-xs font-mono">
+            GitHub API Rate Limit: {rateLimit.remaining} / {rateLimit.limit} remaining
+            (resets at {formatResetTime(rateLimit.reset)})
+          </p>
+        </div>
+      )}
       <div className="border border-black/50 p-4">
         <div className="flex flex-col gap-3">
           {recentCommits.map((commit, index) => (
