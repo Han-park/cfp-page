@@ -102,7 +102,7 @@ export default function YoutubeSection() {
         )}
         
         {!isLoading && !error && videos.length > 0 && (
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {videos.map((video, index) => (
               <Link 
                 href={video.videoUrl} 
